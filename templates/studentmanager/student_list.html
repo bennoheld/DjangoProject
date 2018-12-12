@@ -1,0 +1,36 @@
+{% extends 'studentmanager/index.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{% url 'studentmanager:add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Create Student</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Matriculation Number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for student in object_list %}
+                    <tr>
+                        <th scope="row">{{ student.matriculation_number }}</th>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.birthday }}</td>
+                        <td>
+                            <a href="{% url 'studentmanager:student-delete' student.matriculation_number %}"
+                               class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
