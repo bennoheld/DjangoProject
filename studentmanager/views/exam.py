@@ -8,16 +8,18 @@ from studentmanager.models import Exam
 
 class ExamView(generic.ListView):
     queryset = Exam.objects.all()
+    template_name = 'studentmanager/exam/exam_list.html'
 
 
 class ExamCreateView(generic.CreateView):
     form_class = CreateExamForm
-    template_name = 'studentmanager/create_exam_form.html'
+    template_name = 'studentmanager/exam/exam_create_form.html'
     success_url = reverse_lazy('studentmanager:exam')
 
 
 class ExamDeleteView(generic.DeleteView):
     model = Exam
+    template_name = 'studentmanager/exam/exam_confirm_delete.html'
     success_url = reverse_lazy('studentmanager:exam')
 
     def get_object(self):

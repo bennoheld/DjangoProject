@@ -8,16 +8,18 @@ from studentmanager.models import Student
 
 class StudentView(generic.ListView):
     queryset = Student.objects.all()
+    template_name = 'studentmanager/student/student_list.html'
 
 
 class StudentCreate(generic.CreateView):
     form_class = CreateStudentForm
-    template_name = 'studentmanager/student_form.html'
+    template_name = 'studentmanager/student/student_form.html'
     success_url = reverse_lazy('studentmanager:student')
 
 
 class StudentDelete(generic.DeleteView):
     model = Student
+    template_name = 'studentmanager/student/student_confirm_delete.html'
     success_url = reverse_lazy('studentmanager:student')
 
     def get_object(self):
