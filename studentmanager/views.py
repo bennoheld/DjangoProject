@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
+from studentmanager.forms import CreateStudentForm
 from .models import Student
 
 
@@ -23,8 +24,9 @@ class StudentView(generic.ListView):
 
 
 class StudentCreate(generic.CreateView):
-    model = Student
-    fields = ['matriculation_number', 'name', 'birthday']
+    form_class = CreateStudentForm
+    template_name = 'studentmanager/student_form.html'
+    success_url = reverse_lazy('studentmanager:student')
 
 
 class StudentDelete(generic.DeleteView):
