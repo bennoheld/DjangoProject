@@ -1,6 +1,6 @@
-from .student import *
 from .exam import *
 from .result import *
+from .student import *
 
 
 class IndexView(generic.TemplateView):
