@@ -1,7 +1,7 @@
 {% extends 'studentmanager/index.html' %}
 
 {% block content %}
-    <form action="." method="post">
+    <form action=".." method="post">
         {% csrf_token %}
         <h1>Student "{{ object.matriculation_number }} - {{ object.name }}" endgültig löschen?</h1>
         <p>
