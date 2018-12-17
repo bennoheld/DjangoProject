@@ -4,11 +4,12 @@
     <div class="row">
         <div class="col-md-10">
             <div class="container">
-                <h1 class="display-4">Studierendenverwaltung</h1>
+                <h1 class="display-4">Noteneingabe</h1>
             </div>
         </div>
         <div class="col-md-2">
-            <a href="{% url 'studentmanager:add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Student anlegen</a>
+            <a href="{% url 'studentmanager:result-add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Ergebnis
+                anlegen</a>
         </div>
     </div>
     <div class="row">
@@ -17,20 +18,20 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th scope="col">Prüfungsnummer</th>
                         <th scope="col">Matrikelnummer</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Geburtstag</th>
+                        <th scope="col">Note</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for student in object_list %}
+                    {% for result in object_list %}
                         <tr>
-                            <th scope="row">{{ student.matriculation_number }}</th>
-                            <td>{{ student.name }}</td>
-                            <td>{{ student.birthday }}</td>
+                            <th scope="row">{{ result.exam_id }}</th>
+                            <td>{{ result.matriculation_number }}</td>
+                            <td>{{ result.grade }}</td>
                             <td>
-                                <a href="{% url 'studentmanager:student-delete' student.matriculation_number %}"
+                                <a href="{% url 'studentmanager:result-delete' result.exam_id result.matriculation_number %}"
                                    class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Löschen</a>
                             </td>
                         </tr>

@@ -2,36 +2,43 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
+            <div class="container">
+                <h1 class="display-4">Prüfungsverwaltung</h1>
+            </div>
+        </div>
+        <div class="col-md-2">
             <a href="{% url 'studentmanager:exam-add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Prüfung
                 anlegen</a>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Prüfungsnummer</th>
-                    <th scope="col">Titel</th>
-                    <th scope="col">Datum</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for exam in object_list %}
+            <div class="container">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ exam.exam_id }}</th>
-                        <td>{{ exam.title }}</td>
-                        <td>{{ exam.date }}</td>
-                        <td>
-                            <a href="{% url 'studentmanager:exam-delete' exam.exam_id %}"
-                               class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Löschen</a>
-                        </td>
+                        <th scope="col">Prüfungsnummer</th>
+                        <th scope="col">Titel</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col"></th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for exam in object_list %}
+                        <tr>
+                            <th scope="row">{{ exam.exam_id }}</th>
+                            <td>{{ exam.title }}</td>
+                            <td>{{ exam.date }}</td>
+                            <td>
+                                <a href="{% url 'studentmanager:exam-delete' exam.exam_id %}"
+                                   class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Löschen</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}

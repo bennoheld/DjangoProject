@@ -7,7 +7,7 @@ from studentmanager.models import Student
 
 
 class StudentView(generic.ListView):
-    queryset = Student.objects.all()
+    queryset = Student.objects.order_by('matriculation_number')
     template_name = 'studentmanager/student/student_list.html'
 
 
@@ -21,6 +21,7 @@ class StudentDelete(generic.DeleteView):
     model = Student
     template_name = 'studentmanager/student/student_confirm_delete.html'
     success_url = reverse_lazy('studentmanager:student')
+
 
     def get_object(self):
         _matriculation_number = self.kwargs.get('id')

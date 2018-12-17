@@ -12,4 +12,6 @@ urlpatterns = [
     path('exam/add/', views.ExamCreateView.as_view(), name='exam-add'),
     path('exam/<int:id>/delete/', views.ExamDeleteView.as_view(), name='exam-delete'),
     path('result/', views.ResultView.as_view(), name='result'),
+    path('result/add', views.ResultCreateView.as_view(), name='result-add'),
+    path('result/<int:exam_id>/<int:student_id>/delete', views.ResultDeleteView.as_view(), name='result-delete')
 ]
