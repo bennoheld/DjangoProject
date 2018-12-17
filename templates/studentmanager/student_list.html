@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            <a href="{% url 'studentmanager:add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Create Student</a>
+            <a href="{% url 'studentmanager:add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Student anlegen</a>
         </div>
     </div>
     <div class="row">
@@ -11,9 +11,9 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Matriculation Number</th>
+                    <th scope="col">Matrikelnummer</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Birthday</th>
+                    <th scope="col">Geburtstag</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -25,7 +25,7 @@
                         <td>{{ student.birthday }}</td>
                         <td>
                             <a href="{% url 'studentmanager:student-delete' student.matriculation_number %}"
-                               class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Delete</a>
+                               class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Löschen</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -3,11 +3,11 @@
 {% block content %}
     <form action="." method="post">
         {% csrf_token %}
-        <h1>Do you want to delete Student "{{ object.matriculation_number }} - {{ object.name }}"?</h1>
+        <h1>Student "{{ object.matriculation_number }} - {{ object.name }}" endgültig löschen?</h1>
         <p>
         <div class="btn-group">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Confirm</button>
-            <a href="{% url 'studentmanager:student' %}" class="btn btn-default"><i class="fas fa-times"></i> Cancel</a>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Ja</button>
+            <a href="{% url 'studentmanager:student' %}" class="btn btn-default"><i class="fas fa-times"></i> Abbrechen</a>
         </div>
         </p>
     </form>
