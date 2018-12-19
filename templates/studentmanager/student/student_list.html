@@ -2,35 +2,42 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
+            <div class="container">
+                <h1 class="display-4">Studierendenverwaltung</h1>
+            </div>
+        </div>
+        <div class="col-md-2">
             <a href="{% url 'studentmanager:add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Student anlegen</a>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Matrikelnummer</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Geburtstag</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for student in object_list %}
+            <div class="container">
+                <table class="table table-sm">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ student.matriculation_number }}</th>
-                        <td>{{ student.name }}</td>
-                        <td>{{ student.birthday }}</td>
-                        <td>
-                            <a href="{% url 'studentmanager:student-delete' student.matriculation_number %}"
-                               class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Löschen</a>
-                        </td>
+                        <th scope="col">Matrikelnummer</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Geburtstag</th>
+                        <th scope="col"></th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for student in object_list %}
+                        <tr>
+                            <th scope="row">{{ student.matriculation_number }}</th>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.birthday }}</td>
+                            <td>
+                                <a href="{% url 'studentmanager:student-delete' student.matriculation_number %}"
+                                   class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Löschen</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}

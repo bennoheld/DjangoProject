@@ -34,10 +34,11 @@ class Exam(models.Model):
 
 class Result(models.Model):
     # No student should be able to be deleted as long as there are still results to show.
-    matriculation_number = models.ForeignKey(Student, on_delete=models.PROTECT)
+    matriculation_number = models.ForeignKey(Student, on_delete=models.PROTECT, verbose_name='Matrikelnummer')
     # No student should be able to be deleted as long as there are still results to show.
-    exam_id = models.ForeignKey(Exam, on_delete=models.PROTECT)
-    grade = models.IntegerField(default=None, validators=[MaxValueValidator(6), MinValueValidator(1)],
+    exam_id = models.ForeignKey(Exam, on_delete=models.PROTECT, verbose_name='Prüfungsnummer')
+    grade = models.DecimalField(max_digits=3, decimal_places=2, default=None,
+                                validators=[MaxValueValidator(6), MinValueValidator(1)],
                                 verbose_name='Note')
 
     # Workaround for composite primary-key

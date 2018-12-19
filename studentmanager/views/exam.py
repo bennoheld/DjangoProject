@@ -7,7 +7,7 @@ from studentmanager.models import Exam
 
 
 class ExamView(generic.ListView):
-    queryset = Exam.objects.all()
+    queryset = Exam.objects.order_by('exam_id')
     template_name = 'studentmanager/exam/exam_list.html'
 
 

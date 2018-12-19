@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-md-10">
             <div class="container">
-                <h1 class="display-4">Prüfungsverwaltung</h1>
+                <h1 class="display-4">Noteneingabe</h1>
             </div>
         </div>
         <div class="col-md-2">
-            <a href="{% url 'studentmanager:exam-add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Prüfung
+            <a href="{% url 'studentmanager:result-add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Ergebnis
                 anlegen</a>
         </div>
     </div>
@@ -19,19 +19,19 @@
                     <thead>
                     <tr>
                         <th scope="col">Prüfungsnummer</th>
-                        <th scope="col">Titel</th>
-                        <th scope="col">Datum</th>
+                        <th scope="col">Matrikelnummer</th>
+                        <th scope="col">Note</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for exam in object_list %}
+                    {% for result in object_list %}
                         <tr>
-                            <th scope="row">{{ exam.exam_id }}</th>
-                            <td>{{ exam.title }}</td>
-                            <td>{{ exam.date }}</td>
+                            <th scope="row">{{ result.exam_id }}</th>
+                            <td>{{ result.matriculation_number }}</td>
+                            <td>{{ result.grade }}</td>
                             <td>
-                                <a href="{% url 'studentmanager:exam-delete' exam.exam_id %}"
+                                <a href="{% url 'studentmanager:result-delete' result.exam_id result.matriculation_number %}"
                                    class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Löschen</a>
                             </td>
                         </tr>
