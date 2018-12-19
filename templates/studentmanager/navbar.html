@@ -17,8 +17,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'studentmanager:result' %}">Ergebnisse</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link btn btn-primary" href="{% url 'studentmanager:logout' %}">Logout</a>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item">
+                <li><a href="{% url 'studentmanager:logout' %}"><i class="fas fa-sign-out-alt"></i></span> Logout</a></li>
             </li>
         </ul>
     </div>
