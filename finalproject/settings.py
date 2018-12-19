@@ -119,3 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Specify where to redirect the user upon a successful login
+LOGIN_REDIRECT_URL = '/studentmanager/'
+
+# Specify where to redirect the user upon a successful logout
+LOGOUT_REDIRECT_URL = '/studentmanager/'
