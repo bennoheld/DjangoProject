@@ -67,7 +67,7 @@ ROOT_URLCONF = 'finalproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, '../templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,27 +81,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'finalproject.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-DATABASES = {
-    'development': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'OPTIONS': {
-            'options': '-c search_path=studentmanager_grimmeisen_scholtz'
-        },
-        'NAME': 'Datenbank WIC',
-        'USER': 'WICWS1813',
-        'PASSWORD': get_env_variable('STUDENTMANAGER_POSTGRESQL_PASS'),
-        'HOST': '193.93.243.162',
-        'PORT': '5432'
-    },
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
