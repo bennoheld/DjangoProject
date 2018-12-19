@@ -12,21 +12,33 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_variable(name):
+    """Gets the environment variable or throws ImproperlyConfigured
+       exception
+       :rtype: object
+    """
+    try:
+        return os.getenv(name)
+    except KeyError:
+        raise ImproperlyConfigured('Environment variable “%s” not found.' % name)
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_^3dkp_l42aqxvul%6=j1=6kt_twjo6rb9h#xt#gl%o5q=m1v('
+SECRET_KEY = '_!q1t)5k6lp)))-2fnn*&o_xr+khl3(+@=2pt)(pm1f&ixq7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
-
 
 # Application definition
 
@@ -70,17 +82,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'finalproject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'development': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options': '-c search_path=studentmanager_grimmeisen_scholtz'
+        },
+        'NAME': 'Datenbank WIC',
+        'USER': 'WICWS1813',
+        'PASSWORD': get_env_variable('STUDENTMANAGER_POSTGRESQL_PASS'),
+        'HOST': '193.93.243.162',
+        'PORT': '5432'
+    },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -100,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -113,7 +133,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
