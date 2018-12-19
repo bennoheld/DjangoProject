@@ -34,7 +34,3 @@ class CreateResultForm(forms.ModelForm):
             'matriculation_number': forms.Select(choices=Student.objects.all(), attrs={'class': 'form-control'}),
             'grade': forms.NumberInput(attrs={'class': 'form-control'})
         }
-
-
-
-
