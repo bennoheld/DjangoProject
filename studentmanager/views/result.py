@@ -1,3 +1,8 @@
+"""
+Views related to Result
+"""
+
+
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
@@ -6,7 +11,7 @@ from studentmanager.forms import CreateResultForm
 from studentmanager.models import Result
 
 
-class ResultView(generic.ListView):
+class ResultListView(generic.ListView):
     queryset = Result.objects.order_by('exam_id')
     template_name = 'studentmanager/result/result_list.html'
 

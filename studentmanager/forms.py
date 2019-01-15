@@ -1,3 +1,8 @@
+"""
+Collection of all custom created Forms
+"""
+
+
 from django import forms
 
 from .models import Student, Exam, Result

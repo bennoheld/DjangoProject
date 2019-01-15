@@ -1,3 +1,7 @@
+"""
+Django settings use of finalproject project for PRODUCTION.
+"""
+
 # Load defaults in order to then add/override with production-only settings
 from .defaults import *
 

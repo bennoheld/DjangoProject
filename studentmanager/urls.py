@@ -24,13 +24,13 @@ from . import views
 app_name = 'studentmanager'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('student/', login_required(views.StudentView.as_view()), name='student'),
+    path('student/', login_required(views.StudentListView.as_view()), name='student'),
     path('student/<int:id>/delete/', login_required(views.StudentDeleteView.as_view()), name='student-delete'),
     path('student/add/', login_required(views.StudentCreateView.as_view()), name='add'),
-    path('exam/', login_required(views.ExamView.as_view()), name='exam'),
+    path('exam/', login_required(views.ExamListView.as_view()), name='exam'),
     path('exam/add/', login_required(views.ExamCreateView.as_view()), name='exam-add'),
     path('exam/<int:id>/delete/', login_required(views.ExamDeleteView.as_view()), name='exam-delete'),
-    path('result/', login_required(views.ResultView.as_view()), name='result'),
+    path('result/', login_required(views.ResultListView.as_view()), name='result'),
     path('result/add/', login_required(views.ResultCreateView.as_view()), name='result-add'),
     path('result/<int:exam_id>/<int:student_id>/delete', login_required(views.ResultDeleteView.as_view()),
          name='result-delete'),
