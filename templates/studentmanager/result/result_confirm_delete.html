@@ -3,7 +3,6 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        {% if error %}<p class="error">{{ error }}</p>{% endif %}
         <h1>Ergebnis der Prüfung "{{ object.exam_id }}" für Student "{{ object.matriculation_number }}" endgültig löschen?</h1>
         <p>
         <div class="btn-group">
