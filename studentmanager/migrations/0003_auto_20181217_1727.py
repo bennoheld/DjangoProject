@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('studentmanager', '0002_auto_20181217_1505'),
     ]
@@ -14,6 +13,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='result',
             name='grade',
-            field=models.DecimalField(decimal_places=2, default=None, max_digits=3, validators=[django.core.validators.MaxValueValidator(6), django.core.validators.MinValueValidator(1)], verbose_name='Note'),
+            field=models.DecimalField(decimal_places=2, default=None, max_digits=3,
+                                      validators=[django.core.validators.MaxValueValidator(6),
+                                                  django.core.validators.MinValueValidator(1)], verbose_name='Note'),
         ),
     ]
