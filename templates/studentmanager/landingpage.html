@@ -2,18 +2,42 @@
 {% load static %}
 
 {% block content %}
-    <div class="row">
-    {% for i in "123" %}
-        <div class="col-md-4">
-                <div class="card" >
-                  <img class="card-img-top" src="{% static 'studentmanager/img/placeholder.png'  %}" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+    {% if user.is_authenticated %}
+        <!-- simple dashboard -->
+        <div class="container">
+                <div class="row">
+                <div class="col-md-12">
+                    <h1 class="display-4">Dashboard</h1>
                 </div>
+            </div>
+            <div class="row">
+                {% for element in data %}
+                    <div class="col-md-4">
+                        <div class="card text-center" >
+                            <div class="card-header">{{ element.label }}</div>
+                            <div class="card-body">
+                                <p class="card-text display-1">{{ element.count }}</p>
+                                <hr/>
+                                <p class="card-text"><strong>Durchschnitt:</strong> {{ element.average | floatformat:2 }} </p>
+                                <p class="card-text"><strong>Bester Schnitt:</strong> {{ element.best | floatformat:2 }}</p>
+                                <p class="card-text"><strong>Schlechtester Schnitt:</strong> {{ element.worst| floatformat:2 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    {% endfor %}
-    </div>
+    {% else %}
+        <!-- landing page -->
+        <div class="jumbotron">
+          <h1 class="display-4">Student Manager v0.1</h1>
+          <p class="lead">Herzlich Willkommen beim Pilotprojekt des neuen Notenverwaltungstool der Hochschule Aalen.</p>
+          <hr class="my-4">
+          <p>Um Daten der Studierenden einsehen oder verändern zu können, melden sie sich bitte zuerst an.</p>
+          <p class="lead">
+              <a href="{% url 'studentmanager:login' %}" class="btn btn-primary btn-lg"><i
+                            class="fas fa-sign-in-alt"></i> Zur Anmeldung</a></li>
+          </p>
+        </div>
+    {% endif %}
 {% endblock content %}
