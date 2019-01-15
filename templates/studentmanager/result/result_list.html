@@ -2,24 +2,22 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="container">
-                <h1 class="display-4">Noteneingabe</h1>
+                <h1 class="display-4">Notenverwaltung</h1>
             </div>
-        </div>
-        <div class="col-md-2">
-            <a href="{% url 'studentmanager:result-add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Ergebnis
-                anlegen</a>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="container">
-                <table class="table table-sm">
+                <a href="{% url 'studentmanager:result-add' %}" class="btn btn-primary"><i class="fas fa-plus"></i>
+                    Ergebnis anlegen</a>
+                <table class="table table-sm mt-2">
                     <thead>
                     <tr>
-                        <th scope="col">Prüfungsnummer</th>
-                        <th scope="col">Matrikelnummer</th>
+                        <th scope="col">Prüfung</th>
+                        <th scope="col">Student</th>
                         <th scope="col">Note</th>
                         <th scope="col"></th>
                     </tr>
@@ -27,8 +25,8 @@
                     <tbody>
                     {% for result in object_list %}
                         <tr>
-                            <th scope="row">{{ result.exam_id }}</th>
-                            <td>{{ result.matriculation_number }}</td>
+                            <td>{{ result.exam_id }} - {{ result.exam_id.title }}</td>
+                            <td>{{ result.matriculation_number }} - {{ result.matriculation_number.name }}</td>
                             <td>{{ result.grade }}</td>
                             <td>
                                 <a href="{% url 'studentmanager:result-delete' result.exam_id result.matriculation_number %}"

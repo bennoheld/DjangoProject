@@ -3,6 +3,13 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
+        {% if error %}
+            <div class="form-group">
+                <div class="alert alert-danger col-sm-10" role="alert">
+                    <strong>Fehler!</strong> {{ error }}
+                </div>
+            </div>
+        {% endif %}
         <h1>Student "{{ object.matriculation_number }} - {{ object.name }}" endgültig löschen?</h1>
         <p>
         <div class="btn-group">

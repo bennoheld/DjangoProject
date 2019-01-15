@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
-from django.views import generic
 from django.urls import reverse_lazy
+from django.views import generic
 
 from studentmanager.forms import CreateResultForm
 from studentmanager.models import Result
@@ -25,4 +25,4 @@ class ResultDeleteView(generic.DeleteView):
     def get_object(self):
         _exam_id = self.kwargs.get('exam_id')
         _matriculation_number = self.kwargs.get('student_id')
-        return get_object_or_404(Result, exam_id=_exam_id, matriculation_number = _matriculation_number)
+        return get_object_or_404(Result, exam_id=_exam_id, matriculation_number=_matriculation_number)

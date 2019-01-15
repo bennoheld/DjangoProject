@@ -11,19 +11,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="{% static 'studentmanager/js/tooltip.js.css' %}"></script>
     <link rel="shortcut icon" type="image/png" href="{% static 'studentmanager/img/favicon.ico' %}"/>
 </head>
+
 <body>
-<main role="main" class="container-fluid">
-    <!--Navbar -->
+    <!--Navbar Area-->
     {% include 'studentmanager/navbar.html' %}
-    <!--Navbar -->
-    {% block content %}
-    {% endblock %}
-</main>
-<!-- Footer -->
-{% include 'studentmanager/footbar.html' %}
-<!-- Footer -->
+
+    <!--Content Area -->
+    <main role="main" class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'studentmanager/footbar.html' %}
 </body>
 </html>
 
