@@ -12,18 +12,25 @@ class IndexView(generic.TemplateView):
     template_name = 'studentmanager/landingpage.html'
 
     def get_context_data(self, **kwargs):
+        """ add data for dashboardview to the context object"""
         context = super(IndexView, self).get_context_data(**kwargs)
         students = {'label': Student._meta.verbose_name_plural,
                     'count': Student.objects.count(),
-                    'average': Result.objects.values('matriculation_number').annotate(averageGrade=Avg('grade')).aggregate(Avg('averageGrade')).get('averageGrade__avg', 0.00),
-                    'best': Result.objects.values('matriculation_number').annotate(averageGrade=Avg('grade')).order_by('averageGrade')[:1].first().get('averageGrade', 0.00),
-                    'worst': Result.objects.values('matriculation_number').annotate(averageGrade=Avg('grade')).order_by('-averageGrade')[:1].first().get('averageGrade', 0.00)
+                    'average': Result.objects.values('matriculation_number').annotate(
+                        averageGrade=Avg('grade')).aggregate(Avg('averageGrade')).get('averageGrade__avg', 0.00),
+                    'best': Result.objects.values('matriculation_number').annotate(averageGrade=Avg('grade')).order_by(
+                        'averageGrade')[:1].first().get('averageGrade', 0.00),
+                    'worst': Result.objects.values('matriculation_number').annotate(averageGrade=Avg('grade')).order_by(
+                        '-averageGrade')[:1].first().get('averageGrade', 0.00)
                     }
         exams = {'label': Exam._meta.verbose_name_plural,
                  'count': Exam.objects.count(),
-                 'average': Result.objects.values('exam_id').annotate(averageGrade=Avg('grade')).aggregate(Avg('averageGrade')).get('averageGrade__avg', 0.00),
-                 'best': Result.objects.values('exam_id').annotate(averageGrade=Avg('grade')).order_by('averageGrade')[:1].first().get('averageGrade', 0.00),
-                 'worst': Result.objects.values('exam_id').annotate(averageGrade=Avg('grade')).order_by('-averageGrade')[:1].first().get('averageGrade', 0.00)
+                 'average': Result.objects.values('exam_id').annotate(averageGrade=Avg('grade')).aggregate(
+                     Avg('averageGrade')).get('averageGrade__avg', 0.00),
+                 'best': Result.objects.values('exam_id').annotate(averageGrade=Avg('grade')).order_by('averageGrade')[
+                         :1].first().get('averageGrade', 0.00),
+                 'worst': Result.objects.values('exam_id').annotate(averageGrade=Avg('grade')).order_by(
+                     '-averageGrade')[:1].first().get('averageGrade', 0.00)
                  }
         results = {'label': Result._meta.verbose_name_plural,
                    'count': Result.objects.count(),

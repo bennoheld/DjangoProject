@@ -2,7 +2,6 @@
 Views related to Exam
 """
 
-
 from django.db.models import ProtectedError
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404

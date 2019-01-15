@@ -16,6 +16,7 @@ class Student(models.Model):
         return reverse('studentmanager:student')
 
     def __str__(self):
+        """ get string representation of the object for serialization """
         return str(self.matriculation_number)
 
 
@@ -29,6 +30,7 @@ class Exam(models.Model):
     date = models.DateField(verbose_name='Datum')
 
     def __str__(self):
+        """ get string representation of the object for serialization """
         return str(self.exam_id)
 
 
@@ -49,4 +51,5 @@ class Result(models.Model):
         verbose_name_plural = 'Ergebnisse'
 
     def __str__(self):
+        """ get string representation of the object for serialization """
         return '{} - {}'.format(self.exam_id, self.matriculation_number)
