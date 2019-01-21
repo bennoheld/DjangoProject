@@ -13,25 +13,28 @@ from studentmanager.models import Exam
 
 
 class ExamListView(generic.ListView):
-    queryset = Exam.objects.order_by('exam_id')
-    template_name = 'studentmanager/exam/exam_list.html'
+    queryset = Exam.objects.order_by('exam_id')  # get data for table
+    template_name = 'studentmanager/exam/exam_list.html'  # template to render
 
 
 class ExamCreateView(generic.CreateView):
-    form_class = CreateExamForm
-    template_name = 'studentmanager/exam/exam_create_form.html'
-    success_url = reverse_lazy('studentmanager:exam')
+    form_class = CreateExamForm  # form class to render in template
+    template_name = 'studentmanager/exam/exam_create_form.html'  # template to render
+    success_url = reverse_lazy('studentmanager:exam')  # redirect to url after creation
 
 
 class ExamDeleteView(generic.DeleteView):
-    model = Exam
-    template_name = 'studentmanager/exam/exam_confirm_delete.html'
-    success_url = reverse_lazy('studentmanager:exam')
+    model = Exam  # set model to delete
+    template_name = 'studentmanager/exam/exam_confirm_delete.html'  # template to render
+    success_url = reverse_lazy('studentmanager:exam')  # redirect to url after deletion
 
     def get_object(self):
-        """get exam by exam_id using the ID parameter"""
+        """get exam by exam_id using the ID URL parameter"""
 
+        # extract exam_id from keyword-arguments to use as primary key
         _exam_id = self.kwargs.get('id')
+
+        # try to get exam by exam_id or raise 404 Error
         return get_object_or_404(Exam, exam_id=_exam_id)
 
     def delete(self, request, *args, **kwargs):

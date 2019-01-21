@@ -1,2 +1,2 @@
-'''import Barrel for project settings'''
+'''import-barrel for project settings'''
 from .dev import *
