@@ -53,8 +53,8 @@ class IndexView(generic.TemplateView):
         """ try to get the worst grade of all students"""
         worst_grade = 0
         try:
-            worst_grade = Result.objects.values('matriculation_number').annotate(
-                averageGrade=Avg('grade')).order_byworst_grade[:1].first().get('averageGrade', 0.00)
+            worst_grade = best_grade = Result.objects.values('matriculation_number').annotate(averageGrade=Avg('grade')).order_by(
+                '-averageGrade')[:1].first().get('averageGrade', 0.00)
         except AttributeError:
             pass
         return worst_grade
