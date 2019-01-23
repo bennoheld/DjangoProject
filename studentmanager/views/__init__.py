@@ -31,8 +31,8 @@ class IndexView(generic.TemplateView):
         results = {'label': Result._meta.verbose_name_plural,
                    'count': Result.objects.count(),
                    'average': Result.objects.all().aggregate(Avg('grade')).get('grade__avg', 0.00),
-                   'best': 0,
-                   'worst': 0
+                   'best': self.get_best_result(),
+                   'worst': self.get_worst_result()
                    }
         context['data'] = [students, exams, results]
         return context
